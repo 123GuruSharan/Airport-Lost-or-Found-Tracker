@@ -8,11 +8,11 @@ RUN apt update && apt install -y \
     libboost-all-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Create app directory
+# Set workdir to /app
 WORKDIR /app
 
-# Copy files
-COPY . .
+# Copy ONLY the backend folder
+COPY backend/ .
 
 # Build app
 RUN mkdir build && cd build && cmake .. && make
