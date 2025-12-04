@@ -60,6 +60,10 @@ HashTable tracker;
 int main() {
     crow::SimpleApp app;
 
+    CROW_ROUTE(app, "/")([](){
+    return "Backend is running!";
+});
+
     // Add Item API
     CROW_ROUTE(app, "/add")
     ([&](const crow::request& req){
@@ -112,6 +116,7 @@ int main() {
         }
         return result;
     });
+    
 
     // ✅ Render compatible PORT handling
     const char* portEnv = getenv("PORT");
